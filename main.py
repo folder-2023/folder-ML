@@ -6,7 +6,7 @@ app = Flask(__name__)
 api = Api(app, version='3.0', title='Folder API', description='Swagger 문서', doc="/api-docs")
 
 #test_api = api.namespace('test', description='조회 API')
-prediction_api = api.namespace('prediction', description='감정분석 긍부정 API')
+#prediction_api = api.namespace('prediction', description='감정분석 긍부정 API')
 
 
 # @test_api.route('/STT2TTS')
@@ -15,7 +15,7 @@ prediction_api = api.namespace('prediction', description='감정분석 긍부정
 #         return 'Hello World!'
 
 
-@prediction_api.route('/predict', methods=['GET'])
+@app.route('/predict', methods=['GET'])
 def sentimentPredict():
     if request.method == 'GET':
         text = request.args.get('text')
