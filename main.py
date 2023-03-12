@@ -5,7 +5,7 @@ import sentiment_prediction
 app = Flask(__name__)
 api = Api(app, version='3.0', title='Folder API', description='Swagger 문서', doc="/api-docs")
 
-test_api = api.namespace('test', description='조회 API')
+#test_api = api.namespace('test', description='조회 API')
 prediction_api = api.namespace('prediction', description='감정분석 긍부정 API')
 
 
@@ -15,12 +15,13 @@ prediction_api = api.namespace('prediction', description='감정분석 긍부정
 #         return 'Hello World!'
 
 
-@api.route('/predict', methods=['GET'])
+@prediction_api.route('/predict', methods=['GET'])
 def sentimentPredict():
-    text = request.args.get('text')
-    predict = sentiment_prediction.Prediction()
-    result = predict.text_prediction(text)
-    return result
+    if request.method == 'GET':
+        text = request.args.get('text')
+        predict = sentiment_prediction.Prediction()
+        result = predict.text_prediction(text)
+        return result
 
 
 if __name__ == '__main__':
