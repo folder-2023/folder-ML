@@ -34,13 +34,14 @@ class Prediction():
         data_x = self.sentence_convert_data(text)
         predict = sentiment_model.predict(data_x)
         predict_value = np.ravel(predict)
-        predict_answer = int(np.round(predict_value, 0).item())
+        predict_answer = np.round(predict_value, 0).item()
 
         """
         if predict_answer == 0:
           print("(부정 확률 : %.2f) 부정입니다." % (1-predict_value))
         elif predict_answer == 1:
           print("(긍정 확률 : %.2f) 긍정입니다." % predict_value)
+
         """
 
         return predict_answer
