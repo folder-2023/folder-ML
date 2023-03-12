@@ -16,7 +16,7 @@ prediction_api = api.namespace('prediction', description='감정분석 긍부정
 
 
 @prediction_api.route('/predict', methods=['GET'])
-class sentimentPredict():
+class sentimentPredict(Resource):
     def get(self):
         if request.method == 'GET':
             text = request.args.get('text')
