@@ -16,12 +16,13 @@ prediction_api = api.namespace('prediction', description='감정분석 긍부정
 
 
 @prediction_api.route('/predict', methods=['GET'])
-def sentimentPredict():
-    if request.method == 'GET':
-        text = request.args.get('text')
-        predict = sentiment_prediction.Prediction()
-        result = predict.text_prediction(text)
-        return result
+class sentimentPredict():
+    def get(self):
+        if request.method == 'GET':
+            text = request.args.get('text')
+            predict = sentiment_prediction.Prediction()
+            result = predict.text_prediction(text)
+            return result
 
 
 if __name__ == '__main__':
