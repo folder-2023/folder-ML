@@ -1,1 +1,5 @@
-playsound == 1.2.2
+tensorflow
+transformers
+playsound==1.2.2
+flask_restx
+flask
