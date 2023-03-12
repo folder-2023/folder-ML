@@ -9,13 +9,13 @@ test_api = api.namespace('test', description='조회 API')
 prediction_api = api.namespace('prediction', description='감정분석 긍부정 API')
 
 
-@test_api.route('/STT2TTS')
-class Test(Resource):
-    def get(self):
-        return 'Hello World!'
+# @test_api.route('/STT2TTS')
+# class Test(Resource):
+#     def get(self):
+#         return 'Hello World!'
 
 
-@prediction_api.route('/predict', methods=['GET'])
+@api.route('/predict', methods=['GET'])
 def sentimentPredict():
     text = request.args.get('text')
     predict = sentiment_prediction.Prediction()
