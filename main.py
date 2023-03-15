@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask_restx import Api, Resource, reqparse
 import sentiment_prediction
+import speech_recognition as sr
+from gtts import gTTS
 
 app = Flask(__name__)
 api = Api(app, version='3.0', title='Folder API', description='Swagger 문서', doc="/api-docs")
